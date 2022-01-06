@@ -237,15 +237,14 @@
 
 	main_usbss0_pins_default: main-usbss0-pins-default {
 		pinctrl-single,pins = <
-			/*J721E_IOPAD(0x290, PIN_OUTPUT, 0)*/ /* (U6) USB0_DRVVBUS */
-			J721E_IOPAD(0x210, PIN_INPUT, 7) /* (W3) MCAN1_RX.GPIO1_3 */
+			J721E_IOPAD(0x210, PIN_INPUT, 7) /* (W3) MCAN1_RX.GPIO1_3 - USBC_DIR */
+			/*J721E_IOPAD(0x214, PIN_INPUT, 7)*/ /* (V4) MCAN1_TX.GPIO1_4 -- USBC_INT */
 		>;
 	};
 
 	main_usbss1_pins_default: main-usbss1-pins-default {
 		pinctrl-single,pins = <
 			J721E_IOPAD(0x290, PIN_OUTPUT, 1) /* (U6) USB0_DRVVBUS.USB1_DRVVBUS */
-			J721E_IOPAD(0x214, PIN_INPUT, 7) /* (V4) MCAN1_TX.GPIO1_4 */
 		>;
 	};
 
@@ -366,7 +365,7 @@
 	BONE_PIN(P8_09, default,   P8_09(PIN_INPUT, 7))
 	BONE_PIN(P8_09, pruout,    P8_09(PIN_OUTPUT, 0))
 	BONE_PIN(P8_09, pruin,     P8_09(PIN_INPUT, 1))
-	BONE_PIN(P8_06, gpio,      P8_09(PIN_OUTPUT, 7))
+	BONE_PIN(P8_09, gpio,      P8_09(PIN_OUTPUT, 7))
 	BONE_PIN(P8_09, gpio_pu,   P8_09(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_09, gpio_pd,   P8_09(PIN_OUTPUT_PULLDOWN, 7))
 
@@ -392,7 +391,7 @@
 	BONE_PIN(P8_12, gpio_pd,   P8_12(PIN_OUTPUT_PULLDOWN, 7))
 
 	BONE_PIN(P8_13, default,   P8_13(PIN_INPUT, 7))
-	//BONE_PIN(P8_13, i2c,       P8_13(PIN_OUTPUT_PULLUP, 2))
+	//BONE_PIN(P8_13, i2c,       P8_13(PIN_OUTPUT, 2)) /* I2C3_SCL */
 	BONE_PIN(P8_13, pwm,       P8_13(PIN_OUTPUT, 6))
 	BONE_PIN(P8_13, gpio,      P8_13(PIN_OUTPUT, 7))
 	BONE_PIN(P8_13, gpio_pu,   P8_13(PIN_OUTPUT_PULLUP, 7))
@@ -449,6 +448,7 @@
 	BONE_PIN(P8_21, default,   P8_21(PIN_INPUT, 7))
 	BONE_PIN(P8_21, pruout,    P8_21(PIN_OUTPUT, 0))
 	BONE_PIN(P8_21, pruin,     P8_21(PIN_INPUT, 1))
+	BONE_PIN(P8_21, pruuart,   P8_21(PIN_INPUT, 2))
 	BONE_PIN(P8_21, gpio,      P8_21(PIN_OUTPUT, 7))
 	BONE_PIN(P8_21, gpio_pu,   P8_21(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_21, gpio_pd,   P8_21(PIN_OUTPUT_PULLDOWN, 7))
@@ -459,10 +459,12 @@
 	BONE_PIN(P8_22, gpio,      P8_22(PIN_OUTPUT, 7))
 	BONE_PIN(P8_22, gpio_pu,   P8_22(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_22, gpio_pd,   P8_22(PIN_OUTPUT_PULLDOWN, 7))
+	BONE_PIN(P8_22, uart,      P8_22(PIN_INPUT, 14)) /* UART2_RX */
 
 	BONE_PIN(P8_23, default,   P8_23(PIN_INPUT, 7))
 	BONE_PIN(P8_23, pruout,    P8_23(PIN_OUTPUT, 0))
 	BONE_PIN(P8_23, pruin,     P8_23(PIN_INPUT, 1))
+	BONE_PIN(P8_23, pruuart,   P8_23(PIN_OUTPUT, 2))
 	BONE_PIN(P8_23, gpio,      P8_23(PIN_OUTPUT, 7))
 	BONE_PIN(P8_23, gpio_pu,   P8_23(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_23, gpio_pd,   P8_23(PIN_OUTPUT_PULLDOWN, 7))
@@ -491,6 +493,7 @@
 	BONE_PIN(P8_27, default,   P8_27(PIN_INPUT, 7))
 	BONE_PIN(P8_27, pruout,    P8_27(PIN_OUTPUT, 0))
 	BONE_PIN(P8_27, pruin,     P8_27(PIN_INPUT, 1))
+	BONE_PIN(P8_27, can,       P8_27(PIN_OUTPUT, 6))
 	BONE_PIN(P8_27, gpio,      P8_27(PIN_OUTPUT, 7))
 	BONE_PIN(P8_27, gpio_pu,   P8_27(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_27, gpio_pd,   P8_27(PIN_OUTPUT_PULLDOWN, 7))
@@ -501,6 +504,7 @@
 	BONE_PIN(P8_28, gpio,      P8_28(PIN_OUTPUT, 7))
 	BONE_PIN(P8_28, gpio_pu,   P8_28(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_28, gpio_pd,   P8_28(PIN_OUTPUT_PULLDOWN, 7))
+	BONE_PIN(P8_28, uart,      P8_28(PIN_INPUT, 14)) /* UART8_RX */
 
 	BONE_PIN(P8_29, default,   P8_29(PIN_INPUT, 7))
 	BONE_PIN(P8_29, pruout,    P8_29(PIN_OUTPUT, 0))
@@ -508,6 +512,7 @@
 	BONE_PIN(P8_29, gpio,      P8_29(PIN_OUTPUT, 7))
 	BONE_PIN(P8_29, gpio_pu,   P8_29(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_29, gpio_pd,   P8_29(PIN_OUTPUT_PULLDOWN, 7))
+	BONE_PIN(P8_29, uart,      P8_29(PIN_OUTPUT, 14)) /* UART8_TX */
 
 	BONE_PIN(P8_30, default,   P8_30(PIN_INPUT, 7))
 	BONE_PIN(P8_30, pruout,    P8_30(PIN_OUTPUT, 0))
@@ -536,6 +541,7 @@
 	BONE_PIN(P8_33, gpio,      P8_33A(PIN_OUTPUT, 7) P8_33B(PIN_INPUT, 7))
 	BONE_PIN(P8_33, gpio_pu,   P8_33A(PIN_OUTPUT_PULLUP, 7) P8_33B(PIN_INPUT, 7))
 	BONE_PIN(P8_33, gpio_pd,   P8_33A(PIN_OUTPUT_PULLDOWN, 7) P8_33B(PIN_INPUT, 7))
+	BONE_PIN(P8_33, qep,       P8_33A(PIN_INPUT, 9) P8_33B(PIN_INPUT, 7)) /* EQEP1_B */
 
 	BONE_PIN(P8_34, default,   P8_34(PIN_INPUT, 7))
 	BONE_PIN(P8_34, pruout,    P8_34(PIN_OUTPUT, 0))
@@ -543,6 +549,7 @@
 	BONE_PIN(P8_34, gpio,      P8_34(PIN_OUTPUT, 7))
 	BONE_PIN(P8_34, gpio_pu,   P8_34(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_34, gpio_pd,   P8_34(PIN_OUTPUT_PULLDOWN, 7))
+	BONE_PIN(P8_34, uart,      P8_34(PIN_OUTPUT, 14)) /* UART2_TX */
 
 	BONE_PIN(P8_35, default,   P8_35A(PIN_INPUT, 7) P8_35B(PIN_INPUT, 7))
 	BONE_PIN(P8_35, pruout,    P8_35A(PIN_OUTPUT, 0) P8_35B(PIN_INPUT, 7))
@@ -550,10 +557,12 @@
 	BONE_PIN(P8_35, gpio,      P8_35A(PIN_OUTPUT, 7) P8_35B(PIN_INPUT, 7))
 	BONE_PIN(P8_35, gpio_pu,   P8_35A(PIN_OUTPUT_PULLUP, 7) P8_35B(PIN_INPUT, 7))
 	BONE_PIN(P8_35, gpio_pd,   P8_35A(PIN_OUTPUT_PULLDOWN, 7) P8_35B(PIN_INPUT, 7))
+	BONE_PIN(P8_35, qep,       P8_35A(PIN_INPUT, 9) P8_35B(PIN_INPUT, 7)) /* EQEP1_A */
 
 	BONE_PIN(P8_36, default,   P8_36(PIN_INPUT, 7))
 	BONE_PIN(P8_36, pruout,    P8_36(PIN_OUTPUT, 0))
 	BONE_PIN(P8_36, pruin,     P8_36(PIN_INPUT, 1))
+	BONE_PIN(P8_36, can,       P8_36(PIN_OUTPUT, 6))
 	BONE_PIN(P8_36, gpio,      P8_36(PIN_OUTPUT, 7))
 	BONE_PIN(P8_36, gpio_pu,   P8_36(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_36, gpio_pd,   P8_36(PIN_OUTPUT_PULLDOWN, 7))
@@ -1104,7 +1113,7 @@
 };
 
 &usb0 {
-	dr_mode = "host";
+	dr_mode = "otg";
 	maximum-speed = "super-speed";
 	phys = <&serdes3_usb_link>;
 	phy-names = "cdns3,usb3-phy";
