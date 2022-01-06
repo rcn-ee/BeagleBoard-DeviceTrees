@@ -985,6 +985,10 @@ bone_uart_0: &main_uart0 {
 		"", "", ""; /* 125-127 */
 };
 
+&main_gpio1 {
+	status = "okay";
+};
+
 &main_gpio2 {
 	status = "disabled";
 };
