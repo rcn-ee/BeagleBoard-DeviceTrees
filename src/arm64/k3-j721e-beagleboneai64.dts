@@ -1191,6 +1191,10 @@ bone_uart_0: &main_uart0 {
 	};
 };
 
+bone_i2c_2: &main_i2c3 {
+	symlink = "bone/i2c/2";
+};
+
 &main_i2c3 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&main_i2c3_pins_default>;
