@@ -1268,8 +1268,8 @@ bone_i2c_2: &main_i2c3 {
 	};
 };
 
-&main_i2c6 {
-	status = "disabled";
+bone_i2c_1: &main_i2c6 {
+	symlink = "bone/i2c/1";
 };
 
 &mcu_cpsw {
