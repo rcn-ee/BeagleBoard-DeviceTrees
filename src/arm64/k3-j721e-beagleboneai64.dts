@@ -313,7 +313,7 @@
 		>;
 	};
 
-/* macro: BONE_PIN( <pin>, <mode_name>, <register_value_macro>, <pin_name_in_mode>) */
+/* macro: BONE_PIN( <pin>, <mode_name>, <register_value_macro(s)> */
 #define BONE_PIN(XX,ZZ,QQ) \
 	XX##_##ZZ##_pin: pinmux_##XX##_##ZZ##_pin { pinctrl-single,pins = < QQ >; };
 
@@ -627,6 +627,23 @@
 	BONE_PIN(P8_46, gpio,      P8_46(PIN_OUTPUT, 7))
 	BONE_PIN(P8_46, gpio_pu,   P8_46(PIN_OUTPUT_PULLUP, 7))
 	BONE_PIN(P8_46, gpio_pd,   P8_46(PIN_OUTPUT_PULLDOWN, 7))
+
+	/* Full P9 header mode definitions */
+	/* P9_01 - GND */
+	/* P9_02 - GND */
+	/* P9_03 - VOUT_3V3 */
+	/* P9_04 - VOUT_3V3 */
+	/* P9_05 - VIN */
+	/* P9_06 - VIN */
+	/* P9_07 - VOUT_SYS */
+	/* P9_08 - VOUT_SYS */
+	/* P9_09 - RESET# */
+	/* P9_10 - POWER# */
+
+	/* P9_43 - GND */
+	/* P9_44 - GND */
+	/* P9_45 - GND */
+	/* P9_46 - GND */
 
 	main_p8_pins_default: main-p8-pins-default {
 		pinctrl-single,pins = <
@@ -1065,16 +1082,6 @@
 	typec-dir-debounce-ms = <700>;	/* TUSB321, tCCB_DEFAULT 133 ms */
 };
 
-&serdes2 {
-	serdes2_usb_link: phy@0 {
-		reg = <0>;
-		cdns,num-lanes = <2>;
-		#phy-cells = <0>;
-		cdns,phy-type = <PHY_TYPE_USB3>;
-		resets = <&serdes_wiz2 1>, <&serdes_wiz2 2>;
-	};
-};
-
 &serdes_wiz3 {
 	typec-dir-gpios = <&main_gpio1 3 GPIO_ACTIVE_HIGH>;
 	typec-dir-debounce-ms = <700>;	/* TUSB321, tCCB_DEFAULT 133 ms */
@@ -1101,6 +1108,16 @@
 	maximum-speed = "super-speed";
 	phys = <&serdes3_usb_link>;
 	phy-names = "cdns3,usb3-phy";
+};
+
+&serdes2 {
+	serdes2_usb_link: phy@0 {
+		reg = <0>;
+		cdns,num-lanes = <2>;
+		#phy-cells = <0>;
+		cdns,phy-type = <PHY_TYPE_USB3>;
+		resets = <&serdes_wiz2 1>, <&serdes_wiz2 2>;
+	};
 };
 
 &usbss1 {
@@ -1409,7 +1426,6 @@
 	status = "disabled";
 };
 
-/* uart2 assigned to cpsw9g eth-switch fw running on remote CPU core */
 &main_uart2 {
 	status = "disabled";
 };
