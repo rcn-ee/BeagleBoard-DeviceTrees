@@ -1455,8 +1455,9 @@ bone_i2c_1: &main_i2c6 {
 	status = "disabled";
 };
 
-&main_uart2 {
-	status = "disabled";
+bone_uart_6: &main_uart2 {
+	status = "okay";
+	symlink = "bone/uart/6";
 };
 
 &mcu_mcan0 {
